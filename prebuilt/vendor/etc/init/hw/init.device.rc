@@ -33,3 +33,11 @@ on boot
     chown nfc nfc /dev/pn544
     chmod 0666 /dev/p61
     chown spi spi /dev/p61
+    
+on property:persist.battery.save=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/powersave_bias 1
+
+on property:persist.battery.save=0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 0
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/powersave_bias 0
